@@ -1,0 +1,132 @@
+/* Global Styles */
+body {
+  background-color: #818d9a; /* Light background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333; /* Text color */
+}
+
+.container {
+  max-width: 1000px; 
+}
+
+.card {
+  background-color: #b8b2b2; /* Gray background for cards */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Card shadow */
+}
+
+.card-header {
+  background-color: #007bff; /* Blue header for cards */
+  color: white;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+}
+
+h1, h2 {
+  color: #101111; /* Blue color for headers */
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #2f3b49;
+  border-color: #5c6167;
+  padding: 10px 20px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+/* NavBar */
+.navbar {
+  background-color: #0056b3; /* Deeper blue navbar */
+  border-bottom: 3px solid #004085; /* Dark blue border at the bottom */
+}
+
+.navbar-brand {
+  color: #151414 !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar-brand:hover {
+  color: #f8f9fa !important;
+}
+
+.navbar-nav {
+  margin-left: auto; /* Align nav links to the right */
+}
+
+.nav-link {
+  color: #282121 !important;
+  font-size: 1.1rem;
+  margin-right: 15px; /* Space out the links */
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #f8f9fa !important; /* Lighter text on hover */
+}
+
+.nav-link.active {
+  border-bottom: 2px solid #f8f9fa; /* Underline active link */
+  color: #f8f9fa !important;
+}
+
+.navbar-toggler-icon {
+  background-color: #fff; /* White color for the toggle icon */
+}
+
+.navbar-collapse {
+  justify-content: flex-end; /* Align navbar items to the right */
+}
+
+/* Small screen adjustments */
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+    padding: 10px 0;
+  }
+}
+/* Additional styles for exercises */
+.card-title {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.exercise-info {
+  font-size: 1rem;
+  color: #080707;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.exercise-info span {
+  font-weight: 500;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.card:hover {
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
