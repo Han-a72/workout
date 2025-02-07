@@ -12,7 +12,7 @@ const ViewExercises = () => {
 
     if (token) {
       axios
-        .get('http://localhost:5000/api/exercises', {
+        .get('https://workout-1-t3lv.onrender.com/api/exercises', {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {

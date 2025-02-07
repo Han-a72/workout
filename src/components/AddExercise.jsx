@@ -20,7 +20,7 @@ const AddExercise = () => {
 
     try {
       await axios.post(
-        'http://localhost:5000/api/exercises',
+        'https://workout-1-t3lv.onrender.com/api/exercises',
         { name, reps, sets, weight },
         { headers: { Authorization: `Bearer ${token}` } }
       );

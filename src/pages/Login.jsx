@@ -12,10 +12,11 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post('https://workout-1-t3lv.onrender.com/api/auth/login', {
         email,
         password,
-      });
+    });
+    
 
       // Save token to localStorage
       localStorage.setItem('token', response.data.token);
