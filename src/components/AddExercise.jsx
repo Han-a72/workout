@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Importing useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const AddExercise = () => {
   const [name, setName] = useState('');
   const [reps, setReps] = useState('');
   const [sets, setSets] = useState('');
   const [weight, setWeight] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [isExerciseAdded, setIsExerciseAdded] = useState(false); // State to track if the exercise was added
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const addExercise = async () => {
+    if (!name || !reps || !sets || !weight) {
+      alert('Please fill in all fields before adding.');
+      return;
+    }
+
     const token = localStorage.getItem('token');
-
     if (!token) {
       alert('No token found, please login first');
       return;
@@ -25,26 +29,22 @@ const AddExercise = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert('Exercise added successfully');
-      
-      // Reset form fields
-      setName('');
-      setReps('');
-      setSets('');
-      setWeight('');
-
-      // Navigate to the ViewExercises page
-      navigate('/view-exercises');
+      setIsExerciseAdded(true); // Mark the exercise as added
     } catch (error) {
       alert('Error adding exercise');
       console.error('Error details:', error.response);
     }
   };
 
+  const goToViewExercises = () => {
+    navigate('/view-exercises'); // Navigate to the View Exercises page
+  };
+
   return (
-    <div className="container mt-5" style={{  minHeight: '100vh' }}>
-      <h2 className="text-center mb-4" style={{ color: '#343a40' }}>Add New Exercise</h2>
-      <div className="card shadow-lg p-4 rounded" style={{ maxWidth: '500px', margin: '0 auto', backgroundColor: '#ffffff' }}>
-        <form onSubmit={handleSubmit}>
+    <div className="container mt-5" style={{ minHeight: '100vh' }}>
+      <h2 className="text-center mb-4">Add New Exercise</h2>
+      <div className="card shadow-lg p-4 rounded">
+        <form onSubmit={(e) => e.preventDefault()}>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Exercise Name</label>
             <input
@@ -54,7 +54,6 @@ const AddExercise = () => {
               placeholder="Enter exercise name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              style={{ borderRadius: '0.375rem' }}
             />
           </div>
           <div className="mb-3">
@@ -66,7 +65,6 @@ const AddExercise = () => {
               placeholder="Enter number of reps"
               value={reps}
               onChange={(e) => setReps(e.target.value)}
-              style={{ borderRadius: '0.375rem' }}
             />
           </div>
           <div className="mb-3">
@@ -78,7 +76,6 @@ const AddExercise = () => {
               placeholder="Enter number of sets"
               value={sets}
               onChange={(e) => setSets(e.target.value)}
-              style={{ borderRadius: '0.375rem' }}
             />
           </div>
           <div className="mb-3">
@@ -90,11 +87,27 @@ const AddExercise = () => {
               placeholder="Enter weight"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
-              style={{ borderRadius: '0.375rem' }}
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100" style={{ borderRadius: '0.375rem' }}>Add Exercise</button>
+          <button
+            type="button"
+            className="btn btn-primary w-100 mb-3"
+            onClick={addExercise}
+          >
+            Add Exercise
+          </button>
         </form>
+
+        {isExerciseAdded && (
+          <div className="mt-3">
+            <button
+              className="btn btn-secondary w-100"
+              onClick={goToViewExercises}
+            >
+              Go to View Exercises
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

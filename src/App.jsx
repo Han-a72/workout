@@ -29,7 +29,7 @@ function App() {
         <Route path="/" element={<Register />} />
         <Route path="/addexercise" element={<AddExercise />} />
         <Route path="/view-exercises" element={<ViewExercises />} />
-      </Routes>
+        </Routes>
     </Router>
   );
 }
